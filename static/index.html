@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datacom Internal Portal — Kudos</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="logo-badge">★</span>
+        <div>
+          <h1>Employee Kudos</h1>
+          <p class="subtitle">Recognize and celebrate your colleagues</p>
+        </div>
+      </div>
+      <div class="user-switcher">
+        <label for="currentUserSelect">Signed in as:</label>
+        <select id="currentUserSelect" aria-label="Switch active user"></select>
+        <span id="roleBadge" class="badge">Employee</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container layout">
+    <section class="card form-card" aria-labelledby="give-kudos-heading">
+      <h2 id="give-kudos-heading">Give Kudos</h2>
+      <form id="kudosForm">
+        <div class="form-group">
+          <label for="recipientSelect">Colleague</label>
+          <select id="recipientSelect" required>
+            <option value="">Select a colleague...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="messageInput">Message of Appreciation</label>
+          <textarea
+            id="messageInput"
+            rows="4"
+            maxlength="500"
+            placeholder="Share what you appreciate about their work..."
+            required
+          ></textarea>
+          <div class="char-counter"><span id="charCount">0</span> / 500</div>
+        </div>
+
+        <div id="formFeedback" class="feedback" role="alert" hidden></div>
+
+        <button type="submit" class="btn btn-primary">Send Kudos</button>
+      </form>
+    </section>
+
+    <section class="card feed-card" aria-labelledby="feed-heading">
+      <div class="feed-header">
+        <h2 id="feed-heading">Recent Kudos Feed</h2>
+        <label id="adminToggleWrapper" class="admin-toggle" hidden>
+          <input type="checkbox" id="showHiddenToggle" />
+          Show hidden (moderated) kudos
+        </label>
+      </div>
+
+      <div id="kudosFeed" class="feed-list"></div>
+
+      <div class="pagination" id="paginationControls">
+        <button id="prevPageBtn" class="btn btn-secondary" disabled>Previous</button>
+        <span id="pageInfo">Page 1 of 1</span>
+        <button id="nextPageBtn" class="btn btn-secondary" disabled>Next</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
